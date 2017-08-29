@@ -1,0 +1,18 @@
+@font-face {
+	font-family: 'jua';
+	src: url('/assets/fonts/BMJUA_ttf.ttf');
+}
+
+.jua{
+	font-family: jua, sans, sans-serif;
+}
+
+.landing{
+	background: url('/assets/home-bg.jpg') no-repeat center;
+	background-size: cover;
+	height:93vh;
+}
+
+.color-white{
+	color:#fff;
+}

@@ -1,0 +1,131 @@
+<!-- 네비바 시작-->
+<nav class="navbar navbar-toggleable-md navbar navbar-inverse bg-inverse jua">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">상지대 강의평가</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/home/main">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="/board/lb">강의평가</a>
+      </li>      
+      <li class="nav-item">
+        <a class="nav-link" href="/board/cb">자유게시판</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/board/qb">Q&A 게시판</a>
+      </li>
+      
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><%=current_user.email%></a>
+        </li>
+        
+        <% if current_user.admin %>
+          <li class="nav-item">
+            <a class="nav-link" href="#">관리자</a>
+          </li>
+        <% end %>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/users/sign_out" data-method="delete">로그아웃</a>
+        </li>
+      <%end%>
+      
+    </ul>
+  </div>
+</nav>
+<!-- 네비바 끝-->
+
+<!-- content start-->
+<div class="container-fluid px-0 clearfix jua">
+	<!-- Left Column -->
+
+	<div class="col-sm-3 col-lg-3 mt-3 float-left clearfix">
+		<!-- List-Group Panel -->
+		<div class="card">
+			<div class="card-header ">
+				<h5 class="card-title text-center mb-0" style="textalgin:center;"><i class="fa fa-random" aria-hidden="true"></i> 강의평가 게시판</h5>
+			</div>
+			<div class="list-group list-group-flush">
+				<a href="#" class="list-group-item list-group-item-action">교양</a>
+				<a href="#" class="list-group-item list-group-item-action">교직</a>
+				<a href="#" class="list-group-item list-group-item-action">전공</a>
+				<a href="#" class="list-group-item list-group-item-action">특성화기초</a>
+			</div>
+		</div>
+		<!-- List-Group panel end -->
+		<div class="card">
+				<div class="card-header mt-1 ">
+					<h5 class="card-title text-center mb-0"><i class="fa fa-cog" aria-hidden="true"></i> 좋아요 top 게시판 </h5>
+				</div>
+
+				<div class="card-block">
+					<p class="card-text">좋아요 1번</p>
+					<p class="card-text">좋아요 2번</p>
+					<p class="card-text">좋아요 3번</p>
+					<p class="card-text">좋아요 4번</p>
+					<p class="card-text">좋아요 5번</p>
+					<p class="card-text">좋아요 6번</p>
+					<p class="card-text">좋아요 7번</p>
+					<p class="card-text">좋아요 8번</p>
+				</div>
+		</div>
+	</div>
+	<!--left column end -->
+	
+	<!-- right column start -->
+	<!-- search bar -->
+	<div class="col-sm-9 col-lg-9 float-right clearfix mt-3">
+		<form class="form-inline float-right">
+    		<input class="form-control mr-sm-2" type="text" placeholder="Search">
+    		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		</form>
+	</div>
+  	<!-- search bar end-->
+  	<!-- content start -->
+  	<div class="col-sm-9 col-lg-9 float-right mt-3">
+  		<!-- board -->
+  		
+  		<% if current_user.admin %>
+	  		<div class="col-lg-4 float-left mt-2">
+		  		<div class="card com-lg-12">
+		  			<div class="card-block">
+		    			<h4 class="card-title">강의명</h4>
+		    			<p class="card-text">교수님명</p>
+		    			<a href="/board/lnew/lbbs1" class="btn btn-primary">강의개설</a>
+		  			</div>
+					</div>
+				</div>
+			<%end%>
+			
+		<% @post.each do |p| %>
+  		<div class="col-lg-4 float-left mt-3">
+	  		<div class="card col-lg-12">
+	  			<div class="card-block">
+	    			<h4 class="card-title" style="font-size: 1.2rem"><%= p.title %></h4>
+	    			<p class="card-text"><%= p.name.html_safe %></p>
+	    			<a href="/board/lshow/lbbs1/<%= p.id %>" class="btn btn-primary float-left">평가</a>
+	    			<% if current_user.admin %>
+	    			<a href="/board/ledit/lbbs1/<%= p.id %>" class="btn btn-primary float-left ml-5">수정</a>
+	    			<a href="/board/ldestroy/lbbs1/<%= p.id %>" class="btn btn-primary float-right">폐강</a>
+	    			<%end%>
+	  			</div>
+				</div>
+			</div>
+		<% end %>
+  	</div>	
+</div>
+
+<footer class="text-center">
+	<div class="">
+    	<div class="container">
+        	<p> Team: 권현우 | <a href="#"></a> 이철승 | <a href="#">오제웅</a></p>
+        	<p>Copyright &copy; 2017 </p>
+        </div>
+  </div>	
+</footer>
+        

@@ -1,0 +1,60 @@
+<%# @user.errors.full_messages[0] %>
+<%# @user.errors.messages %>
+
+<link href="/assets/session_signup.css" rel="stylesheet">
+<section class="section_signup">
+  <div class="d-flex justify-content-center align-items-center signup_height col-12">
+    <div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        
+        <%#resource%>
+        <%#session_path(resource_name)%>
+        <%#registration_path(resource_name)%>
+        <div class="form-group field">
+          
+          <%= f.label :email, "이메일", class: 'font-color' %>
+          <span class="float-right" style="color: red;"><%= @user.errors.messages[:email].first%></span>
+          <%= f.email_field :email, required: true, autofocus: true, class: 'form-control'%>
+          
+        </div>
+      
+        <div class="form-group field">
+          <%= f.label :password, "패스워드", class: 'font-color' %>
+          <span class="float-right" style="color: red;"><%= @user.errors.messages[:password].first %></span>
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+          <%= f.password_field :password, label: "패스워드" , autocomplete: "off", class: 'form-control' %>
+        </div>
+      
+        <div class="form-group field">
+          <%= f.label :nickname, "닉네임", class: 'font-color' %>
+          <span class="float-right" style="color: red;"><%= @user.errors.messages[:nickname].first %></span>
+          <%= f.text_field :nickname, autocomplete: "off", class: 'form-control' %>
+        </div>
+        
+        <div class="form-group field">
+          <%= f.label :number, "학번", class: 'font-color' %>
+          <span class="float-right" style="color: red;"><%= @user.errors.messages[:number].first %></span>
+          <%= f.number_field :number, autocomplete: "off", class: 'form-control' %>
+        </div>
+        
+        <div class="form-group field">
+          <%= f.label :major, "학과", class: 'font-color' %>
+          <span class="float-right" style="color: red;"><%= @user.errors.messages[:major].first %></span>
+          <%= f.text_field :major, autocomplete: "off", class: 'form-control' %>
+        </div>
+        
+        <div class="form-group field">
+          <%= f.label :job, "직업", class: 'font-color'%>
+          <span class="float-right" style="color: red;"><%= @user.errors.messages[:job].first %></span>
+          <%= f.select :job, options_for_select([['학생','student'],['교수','professor']]), {}, {required: 'true', class: 'form-control'} %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Sign up", class: 'btn btn-outline-secondary btn-block' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

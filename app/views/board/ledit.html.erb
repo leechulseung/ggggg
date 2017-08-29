@@ -1,0 +1,49 @@
+<%= tinymce_assets %>
+<script type="text/javascript" src="/assets/tinymce.js"></script>
+
+<!-- 네비바 시작-->
+<nav class="navbar navbar-toggleable-md navbar navbar-inverse bg-inverse jua">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">상지대 강의평가</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/board/lb">강의평가</a>
+      </li>      
+      <li class="nav-item">
+        <a class="nav-link" href="/board/cb">자유게시판</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/board/qb">Q&A 게시판</a>
+      </li>     
+      <li class="nav-item">
+        <a class="nav-link" href="/mypage/mp">내정보</a>
+      </li>   
+    </ul>
+  </div>
+</nav>
+<!-- 네비바 끝-->
+
+<div class="container">
+<form action="/board/lupdate/<%= @bbs %>/<%= @post.id %>">
+  <div class="form-group mt-5">
+    <label for="title" class="col-1 col-form-label">Title</label>
+    <div class="col-11 float-right">
+        <input class="form-control" type="text" placeholder="강의명" id="title" name="title" value="<%= @post.title %>">
+     </div>
+  </div>
+  
+  <div class="form-group row">
+  <div class="col-12">
+       <%= tinymce %>
+       <textarea name="contents" class="form-control tinymce" id="contents" rows="15"><%=@post.name%></textarea>
+  </div>
+</div>
+   <input type="submit" value="Add">
+</form>
+</div>

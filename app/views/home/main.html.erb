@@ -1,0 +1,57 @@
+<!-- 네비바 시작-->
+<nav class="navbar navbar-toggleable-md navbar navbar-inverse bg-inverse jua">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">상지대 강의평가</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/home/main">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/board/lb">강의평가</a>
+      </li>      
+      <li class="nav-item">
+        <a class="nav-link" href="/board/cb">자유게시판</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/board/qb">Q&A 게시판</a>
+      </li>
+      
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><%=current_user.email%></a>
+        </li>
+        
+        <% if current_user.admin %>
+          <li class="nav-item">
+            <a class="nav-link" href="#">관리자</a>
+          </li>
+        <% end %>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/users/sign_out" data-method="delete">로그아웃</a>
+        </li>
+      <%end%>
+      
+    </ul>
+  </div>
+</nav>
+<!-- 네비바 끝-->
+
+<!-- Contents start-->
+<div class="container-fluid px-0 clearfix">
+	<section class="landing d-flex justify-content-center align-items-center">
+		<h1 class="jua color-white">상지대학교 강의평가</h1>
+	</section>
+<footer class="text-center">
+  
+	<div class="">
+  	<div class="container">
+      	<p> Team: 권현우 | <a href="#"></a> 이철승 | <a href="#">오제웅</a></p>
+      	<p>Copyright &copy; 2017 </p>
+    </div>
+  </div>	
+</footer>
+</div>

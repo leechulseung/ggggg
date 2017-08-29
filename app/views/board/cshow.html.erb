@@ -1,0 +1,48 @@
+<div class="alert alert-info container" role="alert">
+  <h1>제목 : <%= @cbbs.title %></h1>
+</div>
+<div class="alert alert-warning container" role="alert">
+  <h2>내용 : <%= @cbbs.content %></h2>
+</div>
+<div class="container">
+<tr>
+  <th><a href="/board/cedit/<%= @cbbs.id %>"><button type="button" class="btn btn-outline-primary">수정</button></a></th>
+  <th><a href="/board/cdestroy/<%= @cbbs.id %>" data-confirm="진짜로 삭제 하시겠어요?" data-method="post"><button type="button" class="btn btn-outline-primary">삭제</button></a></th>
+  <th><a href="/board/cb"><button type="button" class="btn btn-outline-primary">목록</button></a></th>
+</tr>
+</div>
+<br>
+
+
+
+<form action='/board/cshow/<%= @cbbs.id %>/ccoment/ccom_create' method ='post' class='container'>
+    <input class="col-10" type="text" name="ccom_content" placeholder="댓글을 입력하세요">
+    <button type="submit" class="btn btn-outline-primary">댓글달기</button>
+</form>
+<hr>
+<!--댓글-->
+<div class="container">
+<table class="table">
+  <thead class="thead-default">
+    <tr>
+      <th></th>
+      <th>이름</th>
+      <th>내용</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+<% i=1 %>
+<% @ccom.each do |x| %>
+    <tr>
+      <th scope="row"><%= i %></th>
+      <td>Mark</td>
+      <td><%= x.content %></td>
+      <td><a href="/board/cshow/<%=@cbbs.id%>/ccoment/ccom_destroy/<%=x.id%>" data-confirm="진짜로 삭제 하시겠어요?" data-method="post">[x]</a></td>
+    </tr>
+<% i +=1 %>
+<% end %>
+  </tbody>
+</table>
+</div>

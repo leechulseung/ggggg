@@ -1,0 +1,13 @@
+    <div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">글작성 페이지</div>
+
+  <!-- Table -->
+  <table class="table">
+    <form action="/board/cupdate/<%= @cbbs.id %>" method="post">
+        <p>제목 <input type="text" name="input_title"></p>
+        <p>내용 <input type="text" name="input_content"></p> 
+        <input type="submit" value="Submit">
+    </form>
+  </table>
+</div>

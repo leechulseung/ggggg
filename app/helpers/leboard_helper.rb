@@ -1,0 +1,2 @@
+module LeboardHelper
+end

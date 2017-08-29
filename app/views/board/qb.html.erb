@@ -1,0 +1,91 @@
+<head>
+  <style>
+    .container{
+      margin-top : 100px;
+    }
+    button{
+      margin-bottom : 10px;
+      float:right;
+    }
+  </style>
+</head>
+
+<!-- 네비바 시작-->
+<nav class="navbar navbar-toggleable-md navbar navbar-inverse bg-inverse jua">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">상지대 강의평가</a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/home/main">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/board/lb">강의평가</a>
+      </li>      
+      <li class="nav-item">
+        <a class="nav-link" href="/board/cb">자유게시판</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/board/qb">Q&A 게시판</a>
+      </li>
+      
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><%=current_user.email%></a>
+        </li>
+        
+        <% if current_user.admin %>
+          <li class="nav-item">
+            <a class="nav-link" href="#">관리자</a>
+          </li>
+        <% end %>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="/users/sign_out" data-method="delete">로그아웃</a>
+        </li>
+      <%end%>
+      
+    </ul>
+  </div>
+</nav>
+<!-- 네비바 끝-->
+<h1 class="jua text-center mt-5">Q & A</h1>
+<div class="container">
+  <table class="table">
+    <thead class="thead-default">
+    <tr>
+      <th>#</th>
+      <th>제목</th>
+      <th>내용</th>
+      <th>닉네임</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% i=1 %>
+      <% @qbb.each do |x| %>
+        <tr>
+          <th scope="row"><%= i %></th>
+          <td><a href="/board/qshow/<%= x.id %>"><%= x.title %></a></td>
+          <td><a href="/board/qshow/<%= x.id %>"><%= x.content.html_safe%></a></td>
+          <td><%= x.ids %></td>
+        </tr>
+        <% i+=1 %>
+      <% end %>
+  </tbody>
+</table>
+<form action="/board/newqb">
+  <button type="submit" class="btn btn-outline-primary">글쓰기</button>
+</form>
+</div>
+
+<footer class="text-center">
+	<div class="">
+    	<div class="container">
+        	<p> Team: 권현우 |  이철승 | 오제웅</p>
+        	<p>Copyright &copy; 2017 </p>
+        </div>
+    </div>	
+</footer>
+        

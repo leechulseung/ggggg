@@ -1,0 +1,19 @@
+.section_signup{
+	height: 100vh;
+	background-image: url("/assets/home-bg.jpg");
+	background-size:cover;
+}
+
+.section_signup a {
+	text-decoration: none;
+	color: white;
+	
+}
+
+.signup_height {
+	height: 600px;
+}
+
+.font-color {
+	color: white;
+}
